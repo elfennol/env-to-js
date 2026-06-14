@@ -1,0 +1,54 @@
+{
+  "name": "@elfennol/env-to-js",
+  "version": "1.0.0",
+  "description": "Read runtime config injected as JSON script tags, with full TypeScript typing",
+  "keywords": [
+    "symfony",
+    "env",
+    "runtime-config",
+    "typescript",
+    "browser"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elfennol/env-to-js.git"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests",
+    "qa": "npm run lint && npm run typecheck && npm run test"
+  },
+  "overrides": {
+    "js-yaml": "^4.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "eslint": "^10.5.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "ts-jest": "^29.4.11",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.61.0"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
+  }
+}
