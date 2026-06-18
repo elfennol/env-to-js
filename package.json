@@ -15,19 +15,26 @@
     "url": "https://github.com/elfennol/env-to-js.git"
   },
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -36,7 +43,8 @@
     "qa": "npm run lint && npm run typecheck && npm run test"
   },
   "overrides": {
-    "js-yaml": "^4.2.0"
+    "js-yaml": "^4.2.0",
+    "esbuild": "^0.28.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -45,10 +53,12 @@
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "ts-jest": "^29.4.11",
+    "tsup": "^8.5.1",
     "typescript": "^5.5.0",
     "typescript-eslint": "^8.61.0"
   },
   "allowScripts": {
-    "unrs-resolver@1.12.2": true
+    "unrs-resolver@1.12.2": true,
+    "esbuild@0.28.1": true
   }
 }
