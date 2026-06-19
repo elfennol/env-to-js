@@ -15,10 +15,10 @@ npm install @elfennol/env-to-js
 ```ts
 import { createConfigReader } from '@elfennol/env-to-js';
 
-interface AppConfig {
+type AppConfig = {
   apiBaseUrl: string;
   cdnBaseUrl: string;
-}
+};
 
 const getAppConfig = createConfigReader<AppConfig>('#rc-app');
 
